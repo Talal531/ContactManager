@@ -5,7 +5,9 @@ import {
   Button,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  TouchableOpacity,
+  Image
 } from "react-native";
 
 import {
@@ -53,14 +55,25 @@ class WelcomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          title="Login"
-          onPress={() => this.props.navigation.navigate("Home")}
+        <Image
+          source={{
+            uri:
+              "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5aa19c12-99f7-4454-a06b-b8a1acbfc91a/d55w1wu-8127e9d2-1c25-40db-ab1f-ac50a121a1f5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVhYTE5YzEyLTk5ZjctNDQ1NC1hMDZiLWI4YTFhY2JmYzkxYVwvZDU1dzF3dS04MTI3ZTlkMi0xYzI1LTQwZGItYWIxZi1hYzUwYTEyMWExZjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Zna9sgfXl9ppwreSLCBOebVx2tPSSIkHoikGMgq6n0o"
+          }}
+          style={{ width: 200, height: 200, marginBottom: 25 }}
         />
-        <Button
-          title="Signup"
+        <TouchableOpacity
+          style={styles.buttonStyle}
           onPress={() => this.props.navigation.navigate("Home")}
-        />
+        >
+          <Text style={styles.textStyle}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          onPress={() => this.props.navigation.navigate("Home")}
+        >
+          <Text style={styles.textStyle}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -117,16 +130,23 @@ const AppStackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => {
       return {
-        // headerLeft: (
-        //   <Text style={{ fontSize: 18, fontWeight: "bold", paddingLeft: 15 }}>
-        //     Left
-        //   </Text>
-        // ),
-        // headerRight: (
-        //   <Text style={{ fontSize: 18, fontWeight: "bold", paddingRight: 15 }}>
-        //     Right
-        //   </Text>
-        // ),
+        headerLeft: (
+          <Text style={{ fontSize: 18, fontWeight: "bold", paddingLeft: 15 }}>
+            {/* Left */}
+          </Text>
+        ),
+        headerRight: (
+          <Text
+            style={{
+              fontSize: 22,
+              color: "#ccc",
+              fontWeight: "bold",
+              paddingRight: 15
+            }}
+          >
+            +
+          </Text>
+        ),
         headerTitleStyle: {
           flex: 1,
           textAlign: "center",
@@ -168,6 +188,24 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333333",
     marginBottom: 5
+  },
+  buttonStyle: {
+    // flex: 1,
+    alignSelf: "stretch",
+    backgroundColor: "#fff",
+    borderColor: "#007aff",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 10
+  },
+  textStyle: {
+    alignSelf: "center",
+    fontSize: 16,
+    color: "#007aff",
+    paddingBottom: 10,
+    paddingTop: 10
   }
 });
 
