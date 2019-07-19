@@ -46,8 +46,7 @@ class LoginComponent extends Component {
 
   onHandleLogin = () => {
     const { email, password } = this.state;
-    console.warn(loginAction);
-    // this.props.loginAction({ email, password });
+    this.props.loginUser({ email, password });
   };
 
   onHandleRegister = () => {
@@ -146,15 +145,20 @@ class LoginComponent extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: ({ email, password }) => dispatch(loginAction({ email, password }))
+    loginUser: ({ email, password }) =>
+      dispatch(loginAction({ email, password }))
   };
 };
 
-// export default connect(
-//   null,
-//   { loginAction }
-// )(LoginComponent);
-export default LoginComponent;
+const mapStateToProps = state => {
+  console.warn(state);
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginComponent);
 
 const resizeMode = "cover";
 

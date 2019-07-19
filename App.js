@@ -13,8 +13,9 @@ import firebase from "firebase";
 import ReduxThunk from "redux-thunk";
 
 import NavigationService from "./NavigationService";
-import LoginComponent from "./src/screens/LoginScreen";
 import reducers from "./src/reducers";
+import LoginComponent from "./src/screens/LoginScreen";
+import Home from "./src/screens/Home";
 
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
@@ -46,6 +47,9 @@ class App extends Component {
 const AppSwitchNavigator = createSwitchNavigator({
   Login: {
     screen: LoginComponent
+  },
+  Home: {
+    screen: Home
   }
 });
 
