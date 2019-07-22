@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  ActivityIndicator
 } from "react-native";
 
 import { connect } from "react-redux";
@@ -68,6 +69,8 @@ class LoginComponent extends Component {
     } = styles;
 
     const { icon, securePassword } = this.state;
+    const { auth } = this.props;
+    console.log("render");
 
     return (
       <View style={container}>
@@ -151,8 +154,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  console.warn(state);
-  return {};
+  console.log("map", state.auth);
+  return {
+    auth: state.auth
+  };
 };
 
 export default connect(
